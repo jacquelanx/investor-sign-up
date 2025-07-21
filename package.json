@@ -2,7 +2,6 @@
   "dependencies": {
     "@sendgrid/mail": "^8.1.5",
     "@tailwindcss/vite": "^4.1.11",
-    "tailwindcss": "^4.1.11",
-    "vite-plugin-lightningcss": "^0.0.5"
+    "tailwindcss": "^4.1.11"
   }
 }
