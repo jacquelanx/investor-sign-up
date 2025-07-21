@@ -1,0 +1,5 @@
+/* Styles globally for entire app */
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
