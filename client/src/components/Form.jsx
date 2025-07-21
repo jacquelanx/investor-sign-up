@@ -18,7 +18,7 @@ export default function Form(){
         setError(null); //Resets error message
 
         try {
-            await axios.post('http://localhost:5000/submit', form);
+            await axios.post('https://investor-sign-up.onrender.com/submit', form);
             setSent(true);
         }
         catch (err) {
