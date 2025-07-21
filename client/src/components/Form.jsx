@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Form(){
+    const navigate = useNavigate();
     //Define possible states for form
     const[form, setForm] = useState({fullName: '', email: '', phone: ''});
     const[sent, setSent] = useState(false);
@@ -20,6 +22,7 @@ export default function Form(){
         try {
             await axios.post('https://investor-sign-up.onrender.com/submit', form);
             setSent(true);
+            navigate('/confirmation');
         }
         catch (err) {
             console.error(err);
@@ -29,39 +32,6 @@ export default function Form(){
             setLoading(false);
         }
     };
-
-    //if (sent) {
-        //return (
-            //<div>
-                //<h2>Yay</h2>
-                //<p>Success!</p>
-            //</div>
-        //);
-    //}
-
-    if (sent) {
-        return (
-            <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100 text-center">
-                <div className="flex justify-center mb-6">
-                    <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center shadow-md">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-8 w-8"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                    </div>
-                </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Your form has been successfully submitted.</h2>
-                <p className="text-gray-600 mb-6">Thank you!</p>
-            </div>
-        );
-    }
-
 
     return (
         <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
